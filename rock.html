@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <style>
+            body {
+                color:blue;
+               font-size: 20px;
+               font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+               background: linear-gradient(rgb(0, 195, 255), rgb(0, 255, 0));
+               color:rgb(217, 255, 0);
+               text-shadow: 5px 6px 4px black;
+            }
+            .button {
+                height: 100px;
+                width: 100px;
+                font-size: 30px;
+                border-radius: 200px;
+                margin-top: 40px;
+                border-width: 3px;
+                margin-left: 20;
+                margin-right: 20;
+                background: linear-gradient(rgb(183, 0, 0), rgb(255, 106, 0),orange,rgb(3, 255, 11),blue);
+                
+            }
+            #game{display: none}
+            input{font-size: 20px;}
+        </style>
+        <script>
+            var moves=['rock','paper','scissors',];
+            var wins=0;
+            var losses=0;
+            var draw=0;
+            function startGame(){
+              varName_input=document.getElementById("name_input");
+              var name=name_input.value;
+              if(name ==""){
+                return;
+              }
+
+              var welcome_div = document.getElementById("welcome");
+              welcome_div.style.display = "none"; 
+              
+              var game_div = document.getElementById("game");
+              game_div.style.display = "block"; 
+            }
+            function playMove(move){
+                var random = Math.random();
+                random=random*3
+                random= Math.floor(random)
+                var rock_wins = move==0 && random==2
+                var paper_wins = move==1 && random==0
+                var scissors_wins = move==2 && random==1
+                var result=moves[move] +" vs "+moves[random] + " | ";
+                if(move == random){ 
+                    result += "you draw";
+                    draw++
+                } else if (rock_wins || paper_wins || scissors_wins){
+                    result+="you win";
+                    wins++;
+                } else  {
+                    result += "you lose"
+                    losses++
+                }
+                    
+                
+
+
+                console.log(result);
+                var result_div=document.getElementById("result")
+                result_div.innerHTML = result;
+                var scores_div=document.getElementById("scores")
+                scores_div.innerHTML = "Wins: " + wins + " | Losses: " + losses + " | Ties: " + draw;
+
+            }
+        </script>
+        </head>
+        <body>
+            <center>
+            <h1><u><i>rock paper scissors   </i></u><hr/>
+                
+<div id="welcome"> 
+    <input type="text" id=name_input splaceholder="enter your name"><input type="button" onclick="startGame()" value="submit">
+</div>
+            <Div id="game">
+                <input type="button" class="button" value="🪨" onclick="playMove(0)">
+                <input type="button" class="button" value="📄" onclick="playMove(1)">
+                <input type="button" class="button" value="✂️" onclick="playMove(2)">
+
+                <h2 id="result"></h2>
+                <h3 id="scores"></h3>
+                
+</h1></div>
+            </center>
+
+
+            </body>
+                
+
+    
+
+    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
